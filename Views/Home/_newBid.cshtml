@@ -1,0 +1,11 @@
+    @model Bid
+    <form asp-action="NewBid" asp-controller="Home" method="post">
+        <span asp-validation-for="Amount"></span>
+        <br>
+        <input asp-for="Amount" placeholder="Enter your bid here ($)">
+        <br>
+        <input asp-for="AuctionId" type="hidden">
+        <input asp-for="UserId" type="hidden">
+        <br>
+        <button>Bid</button>
+    </form>

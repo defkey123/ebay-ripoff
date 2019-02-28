@@ -1,0 +1,28 @@
+@model Auction
+<h1 class="split">Add an Auction!</h1>
+<a href="home" class="split"><button>Home</button></a>
+<form asp-action="PostNewAuction" asp-controller="Home" method="post">
+    <br>
+    <span asp-validation-for="Title"></span>
+    <br>
+    <label asp-for="Title"></label>
+    <input asp-for="Title">
+    <br>
+    <span asp-validation-for="Description"></span>
+    <br>
+    <label asp-for="Description"></label>
+    <input asp-for="Description">
+    <br>
+    <span asp-validation-for="StartingBid"></span>
+    <br>
+    <label asp-for="StartingBid"></label>
+    <input asp-for="StartingBid">
+    <br>
+    <span asp-validation-for="Date"></span>
+    <br>
+    <label asp-for="Date"></label>
+    <input asp-for="Date">
+    <br>
+
+    <input value="Add Auction" type="submit">
+</form>

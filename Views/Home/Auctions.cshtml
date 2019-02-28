@@ -1,0 +1,42 @@
+﻿@model Dashboard
+    <head>
+        <title>Auctions</title>
+    </head>
+<h1 class="split">Auctions</h1>
+<h4 class="split">Hi @Model.CurrentUser.FirstName !</h1>
+<a href="logout" class="split"><button>Logout</button></a>
+<hr>
+<table class="table">
+    <tr>
+        <td>Product</td>
+        <td>Seller</td>
+        <td>Top Bid</td>
+        <td>Time Remaining</td>
+        <td></td>
+    </tr>
+@{
+    foreach(Auction a in @Model.Auctions)
+    {
+    <tr>
+        <td><a href="auction/@a.AuctionId">@a.Title</a></td>
+        <td>@a.Creator.FirstName @a.Creator.LastName</td>
+        @if(@a.Bids.Count > 0)
+        {
+            <td>$@a.Bids.OrderByDescending(b => b.Amount).FirstOrDefault().Amount</td>
+        }
+        else 
+        {
+            <td>$@a.StartingBid</td>
+        }
+        <td>@a.TimeRemaining.ToString("%d") Days</td>
+        @{
+            if(@a.Creator.UserId == Model.CurrentUser.UserId)
+            {
+                <td><a href="delete/@a.AuctionId">Delete</a></td>
+            }
+        }
+    </tr>
+    }
+}
+</table>
+<a href="new"><button>New Auction</button></a>

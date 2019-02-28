@@ -1,0 +1,13 @@
+@model ViewAuction
+<h1 class="split">Auctions</h1>
+<h4 class="split">Welcome, @Model.CurrentUser.FirstName</h1>
+<a href="/logout" class="split"><button>Logout</button></a>
+<hr>
+<h1>@Model.Auction.Title</h1>
+<h4>Posted By: @Model.Auction.Creator.FirstName @Model.Auction.Creator.LastName</h4>
+<h4>Time Remaining: @Model.Auction.TimeRemaining.ToString("%d") Days</h4>
+<h4>Description: @Model.Auction.Description</h4>
+<h4>Current Highest Bid: @Model.Auction.Bids.OrderByDescending(b => b.Amount).FirstOrDefault()</h4>
+<h4>By: CurrentHighestBidder.FirstName CurrentHighestBidder.LastName</h4>
+
+<partial name="_newBid" model="@Model.Bid"></partial>
